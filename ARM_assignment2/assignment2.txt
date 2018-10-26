@@ -1,0 +1,34 @@
+The purpose of IT instruction is check for the specified condition after IT then execute following instructions based on condition result.
+We have various forms of IT instructions:
+1. IT condition 
+   instruction 1
+Here instruction 1 is executed only if the condition specified above is true.
+
+2.ITE condition 
+  instruction 1
+  instruction 2
+Here instruction 1 is executed if condition is true else instruction 2 is executed.
+
+IT instruction can take upto four instructions following it.Means ITTTT,ITTEE etc possible combinations of T and E . 
+
+And also these four instructions must have specified its conditional part of thier syntax,Making them conditional instructions.These conditions can be logically same or inverse. 
+If we look into the erroneous code :
+
+ITTTE LT
+MOV R3
+
+We can see here the instruction here following IT is not conditional compared to 
+ITTTE LT
+ADDLT
+MOVLT
+MOVLT
+SUBGE
+where all the instructions after IT are conditional in execution.
+
+This is the reason we got errors in above mentioned code.
+
+
+
+
+
+
