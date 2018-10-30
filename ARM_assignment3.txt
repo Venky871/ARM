@@ -1,0 +1,52 @@
+1.Precision : Precision means how accurate the content is(in our case number).
+
+Sign bit is just gives positive or negative sign.
+
+Exponent will give the number of places the decimal have to move.
+
+Fractional part or the mantissa will contain the digits of the number which constitute its value. 
+
+Broadly speaking three are required to make a value precise.But under valid conditions sign and exponent remain accurate leaving the precision dependent on fractional part.
+if we see fractional part consists of binary part after the leading 1.but the size of fractional part is only 22 bits.It means all the bits after the 22 bits will be lost . Means the value is less precise .
+
+EX : 0000 1000 1101 1101 1101 1101 1110 0111 is an 32 bit number 
+
+Here fraction part is 000 1101 1101 1101 1101 111 only. Remaining bits are omitted means the value is less precise because of rounding off of fractional part.
+Exponent part is same for precise and non precise number which is  27. 
+2.Normal and subnormal values
+
+In Normal value representation exponent can vary from (-126 to 127 ) with the significand part is after leading 1 of binary representation.
+
+suppose take a binary number : 000....(127 leading 0's )11100. 
+
+Now to get leading 1(1.significand) into position our exponent must be less than -126 which is not valid. 
+
+Here if we can allow leading 0 instead of 1 we can represent the number using exponent as -126 .(0.significand)
+
+And these values with leading 0 is termed as  subnormal values.
+
+3.There are five methods in rounding off to a nearest number.
+
+1.Rounding to nearest , nearer to even : A number is rounded off to its nearest even integer.
+
+ex : 12.5 to 12
+     -12.5 to -12
+                               
+2.Rounding to away , away from zero : A number is rounded off to an intezer away from zero .
+
+ex: 12.5 to 13
+    -12.5 to -13
+3.Rounding towards zero : Its just the opposite of above method.
+
+ex: 12.5 to 12
+    -12.5 to -12
+4.Rounding towards minus infinity : A number is truncated to an intezer in the direction of minus infinity.
+
+ex : 12.5 to 12
+    -12.5 to -13
+5.Rounding towards plus infinity : Its just the opposite of above method.
+ex : 12.5 to 13
+     -12.5 to -12
+
+  
+
