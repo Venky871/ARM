@@ -8,7 +8,7 @@ __main  function
           VLDR.F32 s1 , =1 ;X1 DATA
           VLDR.F32 s2 , =1 ;X2 DATA		  
           ADR.W r0 , BranchTable_Byte
-		  MOV r1 , #0
+		  MOV r1 , #0                   ;r1 will take number to select logic .0-Nand ,1-Nor like that
 		  TBB [r0 , r1 ]
 NAND_LOGIC         VLDR.F32 s28 ,=0.6 	;WEIGHT W1   
 		           VLDR.F32 s29 ,=-0.8  ;WEIGHT W2   
@@ -142,7 +142,7 @@ STOP		   VLDR s0 ,[r0]  ; stop program
 
 OUTPUT     VLDR.F32 s16 , =0.5
            VCMP.F32     s3 , s16  
-           VMRS r1 , FPSCR
+           VMRS r1 , FPSCR                    ;output is kept  in r0 .LOGIC LSL AND CMP ARE APPLIED ON FPSR FLAGS WHOOSE VALUE IS IN R1
            MOV r2 , #1
 		   LSL r2 , r2 ,#31
 		   AND r1 , r1, r2
