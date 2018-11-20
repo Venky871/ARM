@@ -70,7 +70,7 @@ BranchTable_Byte
 	DCB   ((XOR_LOGIC-NAND_LOGIC)/2)
 	DCB   ((XNOR_LOGIC-NAND_LOGIC)/2)
 	DCB   ((NOT_LOGIC-NAND_LOGIC)/2)
-SIGMOID	      MOV r0 , #0x20000000 ; location will have value of x 	
+SIGMOID	      MOV r0 , #0x20000000 ; location will have value of 1 	
               VMOV.F32 s1 , s15  ;s1 will keep reference of x
 	          MOV  r3 ,#0x3f800000   ;Taking constant number 1.
 	          STR  r3 , [r0] 
