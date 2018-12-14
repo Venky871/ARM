@@ -1,17 +1,17 @@
   AREA     appcode, CODE, READONLY
      export __main	 
      IMPORT printMsg		 
-	 IMPORT Printtruthtable	 
-		 
+     IMPORT Printtruthtable	 		 
 	 ENTRY 
 __main  function	
 	      VLDR.F32 s0 , =1 ;X0 DATA
           VLDR.F32 s1 , =1 ;X1 DATA
           VLDR.F32 s2 , =1 ;X2 DATA	
-		  MOV R9 ,#0		
-          MOV R7 ,#0 		  
+	  MOV R9 ,#0		
+          MOV R7 ,#0 
+          MOV R12,#0		  
 startagain 		            ADR.W r0 , BranchTable_Byte
-		                   MOV r1 , #3                   ;r1 will take number to select logic .0-Nand ,1-Nor like that
+		                   MOV r1 , R12                   ;r1 will take number to select logic .0-Nand ,1-Nor like that
 		                   TBB [r0 , r1 ]
 NAND_LOGIC         VLDR.F32 s28 ,=0.6 	;WEIGHT W1   
 		           VLDR.F32 s29 ,=-0.8  ;WEIGHT W2   
@@ -50,8 +50,7 @@ XNOR_LOGIC        VLDR.F32 s28 ,=-5 	;WEIGHT W1
                   VLDR.F32 s31 ,=1   ;BIAS   
                    B  X_CALCULATION
 
-NOT_LOGIC         VLDR.F32 s2 , =0
-                  VLDR.F32 s28 ,=0.5 	;WEIGHT W1   
+NOT_LOGIC         VLDR.F32 s28 ,=0.5 	;WEIGHT W1   
 		          VLDR.F32 s29 ,=-0.7  ;WEIGHT W2   
                   VLDR.F32	s30 ,=0 	;WEIGHT W3
                   VLDR.F32 s31 ,=0.1   ;BIAS   
@@ -181,12 +180,14 @@ input4    VLDR.F32 s0 , =1 ;X0 DATA
 
 
 stop            MOV R0 , R7
+                MOV R7 ,#0	
                 BL Printtruthtable
+				CMP R12 ,#6
+				IT HI
+				BHI stop1
+				ADD R12 ,R12 ,#1
+				B startagain
 stop1           B   stop1	
-
-
-
-
 Table_Byte		  
     DCB   0		  
     DCB   ((input3-input2)/2)	
