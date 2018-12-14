@@ -1,11 +1,11 @@
 #include "stm32f4xx.h"
 #include<stdio.h>
-static int16_t f ;
 void Printtruthtable(const int  a)
 {
 static char  Msg[100];
 static  int16_t i;	
 int j;	
+j=0;	
 char *ptr;	
   Msg[0] = 1 ;
 	Msg[1] = 0 ;
