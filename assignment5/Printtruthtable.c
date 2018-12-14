@@ -18,7 +18,7 @@ char *ptr;
 	Msg[8] = 1 ; 
 	Msg[9] = 1 ;
   Msg[10]= 0 ;
-	Msg[11]=(char)((a>>1)&2);
+	Msg[11]=(char)((a>>1)&1);
   Msg[12]= 1 ;
   Msg[13]= 1 ;
   Msg[14]= 1 ; 		
